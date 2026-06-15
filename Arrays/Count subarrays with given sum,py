@@ -1,0 +1,15 @@
+  def subarraySum(self, nums, k):
+      n = len(nums)
+      sub_arr_count = 0
+      pref_sum = {0:1}
+      sm =0
+      for i in range(n):
+          sm+=nums[i]
+          rem = sm-k
+          if rem in pref_sum:
+              sub_arr_count+=pref_sum[rem]
+          if sm in pref_sum:
+              pref_sum[sm]+=1
+          else:
+              pref_sum[sm]=1
+      return sub_arr_count
